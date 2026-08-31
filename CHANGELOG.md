@@ -10,6 +10,172 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 > **2 breaking changes.** Read the entries below before upgrading.
 
+- You no longer need to publish a prepared release manually after its automated pull request merges, or find a green publish job that skipped a squash commit carrying its pull request number.
+- You no longer get a failed release because GitHub Actions lacked the identity required to create its annotated tag.
+
+### 🚀 Features
+
+- **release:** automate the release pipeline ([#61](https://github.com/dennisadriaans/openrun/pull/61))
+- keep app state in ~/.openrun ([#59](https://github.com/dennisadriaans/openrun/pull/59))
+- **tasks:** select and bulk delete automations ([#42](https://github.com/dennisadriaans/openrun/pull/42))
+- **runs:** add bulk deletion ([#34](https://github.com/dennisadriaans/openrun/pull/34))
+- **chat:** open a native CLI chat with its transcript ([#28](https://github.com/dennisadriaans/openrun/pull/28))
+- **tasks:** refuse unattended runs a workspace cannot support ([#29](https://github.com/dennisadriaans/openrun/pull/29))
+- **tasks:** make scheduled fires durable
+- **chat:** attach images to the composer
+- **chat:** queue follow-ups typed while the agent works
+- **runs:** mark runs unread until you open them
+- **projects:** browse folders with places, hidden files, and history
+- **workspace:** support isolated parallel runs
+- **workspace:** paginate branch pickers
+- **chat:** add terminal debug view and live activity
+- **runs:** stream live context usage
+- **runs:** start a new chat or repeat a run from run detail
+- **runtimes:** discover codex models from its cache file
+- **agents:** offer installed plugins from a $ mention menu
+- **runtimes:** hand a chat to another runtime mid-conversation
+- **git:** let Undo All drop the commits a run made
+- **workspace:** default automations to a worktree
+- **dev:** overlay demo data with pnpm dev -- --demo
+- **runs:** open a run instantly with an optimistic send
+- **runs:** show first prompt as chat title in Runs list
+- **runs:** show the first turn while starting
+- **chat:** fold in-flight tool work
+- **mcp:** sign in once for oauth-gated servers
+- **security:** seal sqlite secrets under data-key
+- **runtimes:** keep a deleted builtin runtime deleted
+- **runs:** paginate the runs list
+- **tasks:** move active/inactive off the automations list
+- **runs:** settle a turn on the live stream
+- **app:** expose MCP, usage and slash commands through core
+- **mcp:** manage every CLI's MCP servers from one page
+- **usage:** total up what each CLI has spent
+- **chat:** render custom and MCP tool calls readably
+- **chat:** offer the CLI's slash commands in every composer
+- **chat:** map the live turn onto thinking orbs
+- **mcp:** let the agent ask Open Run about its own run
+- **chat:** review edits inline with undo
+- **runtimes:** hide runtimes from the pickers
+- **ui:** add a shared hover tooltip
+- **integrations:** drop the local webhook install path
+- **tasks:** save a webhook trigger without saving the task
+- **integrations:** jira connect stops at a project picker
+- **integrations:** let an automation bind to every event
+- **integrations:** badge the ticket a webhook run came from
+- **live:** judge stream liveness by heartbeat, not the socket
+- **integrations:** start an automation from a recipe
+- **integrations:** trigger on a status, not every transition
+- **runtimes:** add fx as an ACP builtin ([#12](https://github.com/dennisadriaans/openrun/pull/12))
+- **integrations:** connect any provider without tokens
+- **cloud:** connect any integration without pasting tokens
+- **cloud:** onboard on first run and move to openrun.sh
+- **chat:** render replies as markdown and fold finished turn work
+- **tasks:** resume a native CLI chat and fire once
+- **tasks:** pick a git branch in the automation form
+- **runtimes:** drive the Antigravity CLI (agy)
+- **models:** offer the models the installed CLI actually knows
+- **security:** sign a browser in with the access token
+- remove the Slack control surface
+- **security:** refuse non-loopback Host headers
+
+### 🩹 Fixes
+
+- **release:** configure tag author ([#65](https://github.com/dennisadriaans/openrun/pull/65))
+- **release:** publish bot-merged releases ([#64](https://github.com/dennisadriaans/openrun/pull/64))
+- **security:** confine the mobile api path prefix
+- **ui:** fill list checks and mute status labels ([#47](https://github.com/dennisadriaans/openrun/pull/47))
+- **workspace:** derive branch choices from git ([#43](https://github.com/dennisadriaans/openrun/pull/43))
+- **cloud:** release device on sign-out ([#46](https://github.com/dennisadriaans/openrun/pull/46))
+- **tasks:** list unattended readiness blockers in repair order ([#36](https://github.com/dennisadriaans/openrun/pull/36))
+- **runs:** probe pull requests by persisted head branch ([#35](https://github.com/dennisadriaans/openrun/pull/35))
+- **security:** harden native transcript import ([#33](https://github.com/dennisadriaans/openrun/pull/33))
+- **tasks:** close remaining unattended isolation races ([#32](https://github.com/dennisadriaans/openrun/pull/32))
+- remove useless info line ([#21](https://github.com/dennisadriaans/openrun/pull/21))
+- make windows CI tests pass ([#20](https://github.com/dennisadriaans/openrun/pull/20))
+- report the branch a workspace HEAD points at ([#19](https://github.com/dennisadriaans/openrun/pull/19))
+- keep client aborts out of the dev server log ([#18](https://github.com/dennisadriaans/openrun/pull/18))
+- **ui:** render a not-found page for unknown routes ([#17](https://github.com/dennisadriaans/openrun/pull/17))
+- restore typecheck and format on main ([#15](https://github.com/dennisadriaans/openrun/pull/15))
+- **tasks:** arm schedules on server startup
+- **tasks:** preserve automation edit settings
+- **db:** unbreak schema template literal in migrations
+- **ui:** suppress hydration warning on theme-stamped html
+- **server:** answer client aborts with 499 instead of 500
+- **workspace:** format picker changes
+- **chat:** satisfy transcript lint
+- **runs:** align telemetry types and formatting
+- **cloud:** stop bouncing a freshly linked machine to /welcome
+- **runtimes:** pass --yolo to codex exec instead of --full-auto
+- only show installed runtimes
+- **chrome:** match local app favicon to openrun.sh
+- markdown color
+- **runs:** kill the agent CLI when a run is stopped
+- **db:** add run_queue columns after the table exists
+- **ui:** keep github marks visible on dark chrome
+- **runtimes:** never default into a prompt-injected effort
+- **cloud:** disconnect drops the local row when the vendor refuses
+- **db:** adopt the legacy database instead of reading past it
+- **ci:** store CLA signatures in this repository
+- **integrations:** drop stale three-provider copy
+- **workspace:** keep the file tree expanded after closing a file
+- **ui:** give every button an explicit type
+- **build:** load core through a dynamic import in mobile handlers
+
+### 💅 Refactors
+
+- **chat:** quiet the run top bar behind a ⋯ menu
+- **chat:** vendor thinking orb renderer
+- **ui:** lay the automations list out as a table
+- **tasks:** make the automation detail page always editable
+
+### 📖 Documentation
+
+- add concise pull request review skill ([#62](https://github.com/dennisadriaans/openrun/pull/62))
+- keep agent rules in AGENTS.md only ([#40](https://github.com/dennisadriaans/openrun/pull/40))
+- ship the readme screenshot with the repo
+- update agent project map
+- **chat:** note the inline code tint
+- **agents:** require conventional commit messages
+
+### 📦 Build
+
+- **deps-dev:** Bump @types/better-sqlite3 from 7.6.13 to 9.6.0 ([#9](https://github.com/dennisadriaans/openrun/pull/9))
+- **deps:** move pnpm overrides to the workspace root ([#16](https://github.com/dennisadriaans/openrun/pull/16))
+- **lint:** cap comment blocks at three lines
+- **deps:** Bump node-cron from 3.0.3 to 4.6.0
+- **deps:** Bump the minor-and-patch group across 1 directory with 13 updates
+- **deps:** Bump better-sqlite3 from 11.10.0 to 13.0.3
+- **deps-dev:** Bump typescript from 6.0.3 to 7.0.2
+- **deps-dev:** Bump @types/node from 22.20.1 to 26.2.0
+- **deps:** Bump lucide-react from 0.469.0 to 1.31.0
+- **deps:** Bump pnpm/action-setup from 4 to 6
+- **deps:** Bump actions/checkout from 4 to 7
+- **deps:** Bump actions/setup-node from 4 to 7
+- pin the toolchain and widen CI coverage
+
+### 🤖 CI
+
+- override js-yaml and nanoid so prod audit is clean
+- pin pnpm so GitHub Actions can install
+
+### 🏡 Chore
+
+- **release:** v0.1.0 ([#63](https://github.com/dennisadriaans/openrun/pull/63))
+- manage agent rules ([#39](https://github.com/dennisadriaans/openrun/pull/39))
+- optimize readme
+- **build:** use explicit .ts extensions in vite config
+- normalize repository formatting
+- **ui:** add favicon and apple touch icons
+- **lint:** adopt Biome for lint and format
+
+### Uncategorised
+
+- Initial commit
+
+## v0.1.0 — 2026-08-31
+
+> **2 breaking changes.** Read the entries below before upgrading.
+
 - You no longer miss Claude Code / Codex when Open Run is started from Cursor or another GUI — common user install dirs (`~/.local/bin`, Homebrew, npm/pnpm, Windows `%USERPROFILE%\.local\bin`) are added to PATH automatically, and older databases that only had a partial builtin list get the full Claude / Codex / Grok / Gemini set back (Aider and the shell-echo demo are retired).
 - You no longer hit Enable/Run now/form/queue/Next-run with four slightly different copies of the same refuse logic — workspace / PATH / prompt share `lib/runPrereqGate.ts`, the queue skips empty-prompt entries the scheduler would refuse, and Next run names a missing or not-ready workspace instead of a blank dash.
 - You no longer watch a Supervised Claude run stall until the five-minute auto-deny — Allow / Deny on each pending approval request answers the live session from chat.
